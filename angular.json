@@ -127,7 +127,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://github.com/C-F-4/musical-chairs-webapp/",
+            "baseHref": "https://c-f-4.github.io/musical-chairs-webapp/",
             "name": "Musical Chairs Team",
             "email": "abhinavsaxena67@gmail.com"
           }
