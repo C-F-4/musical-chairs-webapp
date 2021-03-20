@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+To get help on Conventional Commits, check out the docs [here](https://www.conventionalcommits.org/en/v1.0.0/)
+
+More help on SCSS [here](https://sass-lang.com/documentation/syntax)
