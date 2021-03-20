@@ -29,3 +29,58 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 To get help on Conventional Commits, check out the docs [here](https://www.conventionalcommits.org/en/v1.0.0/)
 
 More help on SCSS [here](https://sass-lang.com/documentation/syntax)
+
+
+App Screen Flow
+
+Screen 1
+------------------------
+| l   |
+| o   |
+| g   |
+| i   |
+| n   |
+------------------------
+
+* login or signup will remain on the same section.
+
+Screen 2
+------------------------
+-----------Nav--------P-
+Rooms
+|----------------------|
+|----------------------|
+History
+|----------------------|
+|----------------------|
+
+* Click on P icon for Profile, Settings, Logout
+profile
+settings
+
+Generate 5 Rooms with random number of users (0 - 10).
+Card { room - assign random name, view room as spectator, (join room) }
+Generate random participation history (gamesJoined, gamesWon, eliminationAt, dateOfParticipation).
+Card { win or loss, date of participation, elimiated at level }
+
+Screen 3 (Room)
+------------------------
+-----------Nav--------P-
+
+         Round 0
+
+ o  o  o  o  o  o  o  o
+ o  o  o  o  o  o  o  o
+ o  o  o  o  o  o  o  o
+ o  o  o  o  o  o  o  o
+ o  o  o  o  o  o  o  o
+
+------------------------
+List of elimination
+------------------------
+
+Card o { Chair#, name, avatar }
+Hide animation on eliminate
+
+Take a second to imagine that you are in a room with 100 chairs arranged in a circle. These chairs are numbered sequentially from One to One Hundred. At some point in time, the person in chair #1 will be told to leave the room. The person in chair #2 will be skipped, and the person in chair #3 will be told to leave. Next to go is person in chair #6. In other words, 1 person will be skipped initially, and then 2, 3, 4.. and so on. This pattern of skipping will keep going around the circle until there is only one person remaining- The survivor! Note that each chair is removed when the person leaves the room.
+Write an HTML page using Typescript to visualize the disappearing chairs and figure out which chair the survivor is sitting in.
