@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { RegisterComponent } from './register/register.component';
@@ -12,6 +13,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { RoomViewComponent } from './room-view/room-view.component';
 import { RoomViewItemComponent } from './room-view-item/room-view-item.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { GameHistoryComponent } from './game-history/game-history.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { NavigationComponent } from './navigation/navigation.component';
     ProfileComponent,
     RoomViewComponent,
     RoomViewItemComponent,
-    NavigationComponent
+    NavigationComponent,
+    DashboardComponent,
+    GameHistoryComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
