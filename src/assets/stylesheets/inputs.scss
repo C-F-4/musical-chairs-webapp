@@ -1,0 +1,21 @@
+@import 'colors';
+
+.form-group {
+  @extend .mb-10;
+
+  input[type=text],
+  input[type=email],
+  input[type=password] {
+    width: 100%;
+    padding: 10px;
+    border: 2.5px solid $color-lightgrey;
+    border-radius: 2.5px;
+    box-sizing: border-box;
+
+    @extend .mtb-10;
+  }
+
+  .text-link {
+    @extend .plr-5;
+  }
+}

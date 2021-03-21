@@ -5,7 +5,7 @@
   </div>
   <div class="form-wrapper w-100 p-20 pt-0">
     <form action="" class="text-secondary">
-      <h2>Let's login to Play!</h2>
+      <h2 class="mb-20">Let's login to Play!</h2>
       <div class="form-group">
         <label for="" class="email">Email Address</label>
         <input type="email" name="" id="">
@@ -16,14 +16,14 @@
         <input type="password" name="" id="">
         <p class="info"></p>
       </div>
-      <div>
-        <p>
+      <div class="form-group">
+        <div class="text">
           <span>Don't have an account!</span>
-          <a routerLink="" [queryParams]="qpRegisterParams">Sign Up</a>
-        </p>
+          <a class="text-link" routerLink="/" [queryParams]="qpRegisterParams">Sign Up</a>
+        </div>
       </div>
-      <div class="button-group">
-        <button type="submit">Next</button>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary btn-w2">Next</button>
       </div>
     </form>
   </div>

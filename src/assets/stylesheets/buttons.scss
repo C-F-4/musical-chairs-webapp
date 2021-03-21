@@ -1,0 +1,37 @@
+.btn-group {
+  @extend .mtb-10;
+}
+
+.btn {
+  padding: 7.5px 15px;
+  font-weight: bolder;
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.btn-primary {
+    background-color: $color-primary;
+    color: $color-secondary;
+    border-color: $color-primary;
+
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-primary;
+      border-color: $color-primary;
+    }
+  }
+
+  &.btn-w2 {
+    min-width: 50%;
+  }
+
+  &.btn-w3 {
+    min-width: 33.33%;
+  }
+
+  // .btn-group & {
+  //   min-width: 20%;
+  // }
+}
