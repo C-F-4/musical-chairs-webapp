@@ -6,8 +6,13 @@
   padding: 7.5px 15px;
   font-weight: bolder;
   text-transform: uppercase;
+  transition: all 0.25s;
 
-  &:hover {
+  &:disabled {
+    opacity: 0.75;
+  }
+
+  &:hover:not(:disabled) {
     cursor: pointer;
   }
 
@@ -16,7 +21,7 @@
     color: $color-secondary;
     border-color: $color-primary;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: $color-secondary;
       color: $color-primary;
       border-color: $color-primary;

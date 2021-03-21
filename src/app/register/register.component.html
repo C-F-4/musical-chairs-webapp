@@ -4,16 +4,16 @@
     <img class="img--logo w-50" src="assets/images/logo-sm.png" alt="App Logo">
   </div>
   <div class="form-wrapper w-100 p-20 pt-0">
-    <form action="" class="text-secondary">
+    <form action="" class="text-secondary" [formGroup]="formRegister" (ngSubmit)="onRegister()">
       <h2 class="mb-20">Let's Create an Account!</h2>
       <div class="form-group">
         <label for="" class="email">Email Address</label>
-        <input type="email" name="" id="">
+        <input type="email" name="" id="" formControlName="email">
         <p class="info"></p>
       </div>
       <div class="form-group">
         <label for="" class="password">Password</label>
-        <input type="password" name="" id="">
+        <input type="password" name="" id="" formControlName="pass">
         <p class="info"></p>
       </div>
       <div class="form-group">
@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="btn-group">
-        <button (click)="submit($event)" class="btn btn-primary btn-w2">Next</button>
+        <button type="submit" class="btn btn-primary btn-w2" [disabled]="!formRegister.valid">Next</button>
       </div>
     </form>
   </div>

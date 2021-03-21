@@ -13,14 +13,14 @@ const routes: Routes = [
     path: '',
     component: LandingComponent
   },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
+  // {
+  //   path: 'register',
+  //   component: RegisterComponent
+  // },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
   {
     path: 'dashboard',
     component: DashboardComponent
