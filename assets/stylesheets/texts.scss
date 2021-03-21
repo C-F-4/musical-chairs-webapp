@@ -1,0 +1,42 @@
+a,
+a:visited,
+a:hover {
+  color: $color-denim;
+  text-decoration: none !important;
+
+  &.secondary {
+    color: $color-tertiary;
+
+    &:hover {
+      color: $color-supernova;
+    }
+
+    svg {
+      fill: $color-tertiary;
+    }
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  svg {
+    fill: $color-yellow;
+  }
+}
+
+a:hover {
+  color: $color-toryblue;
+}
+
+p {
+  margin: 0;
+}
+
+.text-primary {
+  color: $color-secondary;
+}
+
+.text-secondary {
+  color: $color-quaternary;
+}
