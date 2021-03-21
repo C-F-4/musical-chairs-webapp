@@ -20,6 +20,14 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get username(): string {
+    return this.userService.loggedUser?.username;
+  }
+
+  get avatar(): string {
+    return this.userService.loggedUser?.avatar;
+  }
+
   async onLogout(evt: Event): Promise<void> {
     evt.preventDefault();
     const isLoggedOut = await this.userService.logout();
@@ -28,6 +36,11 @@ export class NavigationComponent implements OnInit {
       return;
     }
     this.router.navigate([''], { queryParams: { [Constants.QpPage]: Constants.PageLogin } });
+  }
+
+  async onToggleTheme(evt: Event): Promise<void> {
+    evt.preventDefault();
+    this.loggerService.log('LOG: To-Do Theme Toggle');
   }
 
 }

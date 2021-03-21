@@ -10,8 +10,6 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #1976d2;
-  color: white;
   font-weight: 600;
 }
 
@@ -19,17 +17,17 @@
   margin: 0 16px;
 }
 
-.toolbar #twitter-logo {
+.toolbar #profile-logo {
   height: 40px;
   margin: 0 8px;
 }
 
-.toolbar #youtube-logo {
+.toolbar #logout-logo {
   height: 40px;
   margin: 0 16px;
 }
 
-.toolbar #twitter-logo:hover,
-.toolbar #youtube-logo:hover {
+.toolbar #profile-logo:hover,
+.toolbar #logout-logo:hover {
   opacity: 0.8;
 }

@@ -1,23 +1,32 @@
 <!-- To-Do: Toolbar -->
-<div class="toolbar" role="banner">
-  <img width="40" alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-  <span>Welcome</span>
-  <div class="spacer"></div>
-  <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
-    <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-      <rect width="400" height="400" fill="none" />
-      <path
-        d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23"
-        fill="#fff" />
-    </svg>
-  </a>
-  <a aria-label="Logout" rel="noopener" (click)="onLogout($event)" title="Logout">
-    <svg id="youtube-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24" fill="#fff">
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path
-        d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z" />
-    </svg>
-  </a>
+<div class="toolbar navbar" role="banner">
+  <div class="navbar-left spacer text-left">
+    <a aria-label="View Profile" routerLink="profile" class="navbar-brand" title="View Profile">
+      <img width="40" alt="Angular Logo" [src]="avatar" />
+      <span>Welcome, {{ username }}</span>
+    </a>
+  </div>
+  <div class="navbar-middle spacer text-center">
+    <div class="navbar-app-logo">
+      <a aria-label="View Dashboard" routerLink="dashboard" title="View Dashboard"><img class="img-logo" src="assets/images/logo-sm.png" alt="App Logo"></a>
+    </div>
+  </div>
+  <div class="navbar-right spacer text-right">
+    <a aria-label="Dark Mode" rel="noopener" (click)="onToggleTheme($event)" title="Dark Mode">
+      <svg id="profile-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g id="surface1">
+          <path style="stroke:none;fill-rule:nonzero;fill:#000000;fill-opacity:1;" d="M 12.007812 0 C 5.386719 0 0 5.386719 0 12.007812 C 0 18.628906 5.386719 24.015625 12.007812 24.015625 C 18.628906 24.015625 24.015625 18.628906 24.015625 12.007812 C 24.015625 5.386719 18.628906 0 12.007812 0 Z M 1.1875 12.007812 C 1.1875 6.039062 6.039062 1.1875 12.007812 1.1875 L 12.007812 22.832031 C 6.039062 22.832031 1.1875 17.976562 1.1875 12.007812 Z M 1.1875 12.007812 "/>
+        </g>
+      </svg>
+    </a>
+    <a aria-label="Logout" rel="noopener" (click)="onLogout($event)" title="Logout">
+      <svg id="logout-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
+          <g id="surface1">
+            <path style=" stroke:none;fill-rule:nonzero;fill:#2196f3;fill-opacity:1;" d="M 14 13 C 12.347656 13 11 11.652344 11 10 C 11 8.347656 12.347656 7 14 7 L 16 7 L 16 3 C 16 1.347656 14.652344 0 13 0 L 2.25 0 C 1.921875 0 1.613281 0.164062 1.425781 0.433594 C 1.238281 0.703125 1.199219 1.050781 1.316406 1.355469 L 8.566406 20.355469 C 8.714844 20.742188 9.085938 21 9.5 21 L 13 21 C 14.652344 21 16 19.652344 16 18 L 16 13 Z M 14 13 "/>
+            <path style=" stroke:none;fill-rule:nonzero;fill:#607d8b;fill-opacity:1;" d="M 18.617188 14.925781 C 18.242188 14.769531 18 14.402344 18 14 L 18 11 L 14 11 C 13.449219 11 13 10.550781 13 10 C 13 9.449219 13.449219 9 14 9 L 18 9 L 18 6 C 18 5.597656 18.242188 5.230469 18.617188 5.074219 C 18.992188 4.921875 19.421875 5.007812 19.707031 5.292969 L 23.707031 9.292969 C 24.097656 9.683594 24.097656 10.316406 23.707031 10.707031 L 19.707031 14.707031 C 19.421875 14.992188 18.992188 15.078125 18.617188 14.925781 Z M 18.617188 14.925781 "/>
+            <path style=" stroke:none;fill-rule:nonzero;fill:#64b5f6;fill-opacity:1;" d="M 8.644531 2.101562 L 2.636719 0.0976562 C 1.28125 -0.316406 0 0.683594 0 2 L 0 20 C 0 20.855469 0.542969 21.617188 1.355469 21.898438 L 7.363281 23.902344 C 7.582031 23.96875 7.785156 24 8 24 C 9.101562 24 10 23.101562 10 22 L 10 4 C 10 3.144531 9.457031 2.382812 8.644531 2.101562 Z M 8.644531 2.101562 "/>
+          </g>
+      </svg>
+    </a>
+  </div>
 </div>

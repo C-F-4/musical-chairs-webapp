@@ -1,0 +1,19 @@
+.navbar {
+  background-color: $color-primary;
+  color: $color-secondary;
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+
+    & * {
+      color: $color-secondary;
+    }
+  }
+
+  .navbar-app-logo .img-logo {
+    width: 100px;
+    margin-top: 40px!important;
+    transform: rotate(180deg);
+  }
+}
