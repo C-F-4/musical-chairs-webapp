@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Constants } from './../enums';
+import { User } from './../models';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,11 @@ export class RegisterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submit(evt: Event): void {
+    evt.preventDefault();
+    console.log(new User('john@test.com', 'password1'));
   }
 
 }

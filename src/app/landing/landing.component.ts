@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
-  title = 'musical-chairs-game';
+  title = 'Magical Chairs (Adventure Game)';
   currentRoute: string = Constants.PageRegister;
   registerRoute: string = Constants.PageRegister;
 
