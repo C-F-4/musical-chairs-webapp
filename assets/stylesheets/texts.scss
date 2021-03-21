@@ -30,6 +30,7 @@ a:hover {
 }
 
 a:hover {
+  cursor: pointer;
   color: $color-toryblue;
 }
 
@@ -43,4 +44,16 @@ p {
 
 .text-secondary {
   color: $color-quaternary;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
