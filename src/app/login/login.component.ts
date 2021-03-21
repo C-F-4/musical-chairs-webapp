@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Constants } from './../enums';
 
 @Component({
   selector: 'app-login',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  readonly qpRegisterParams = {
+    [Constants.QpPage]:Constants.PageRegister
+  };
 
   constructor() { }
 

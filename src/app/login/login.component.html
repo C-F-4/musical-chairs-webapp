@@ -1,1 +1,30 @@
-<p>login works!</p>
+
+<div class="wrapper--login d-flex-col">
+  <div class="img-wrapper p-20 pb-10">
+    <img class="img--logo w-50" src="assets/images/logo-sm.png" alt="App Logo">
+  </div>
+  <div class="form-wrapper w-100 p-20 pt-0">
+    <form action="" class="text-secondary">
+      <h2>Let's login to Play!</h2>
+      <div class="form-group">
+        <label for="" class="email">Email Address</label>
+        <input type="email" name="" id="">
+        <p class="info"></p>
+      </div>
+      <div class="form-group">
+        <label for="" class="password">Password</label>
+        <input type="password" name="" id="">
+        <p class="info"></p>
+      </div>
+      <div>
+        <p>
+          <span>Don't have an account!</span>
+          <a routerLink="" [queryParams]="qpRegisterParams">Sign Up</a>
+        </p>
+      </div>
+      <div class="button-group">
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</div>

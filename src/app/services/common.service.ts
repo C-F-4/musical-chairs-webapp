@@ -5,5 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class CommonService {
 
-  constructor() { }
+  showNavigation: boolean;
+  globals: any;
+
+  constructor() {
+    this.showNavigation = false;
+  }
+
 }
