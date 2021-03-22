@@ -1,0 +1,118 @@
+hr.top-nav-lines {
+  display: block;
+  border-top: 2px solid #000;
+  z-index: -1;
+  width: 100%;
+
+  &.right {
+    left: auto;
+    right: 0;
+  }
+
+  &.thread {
+    -webkit-animation: moving-thread 10s infinite;
+    -moz-animation: moving-thread 10s infinite;
+    -o-animation: moving-thread 10s infinite;
+    animation: moving-thread 10s infinite;
+  }
+
+  &.thread-2 {
+    -webkit-animation: moving-thread 8s infinite;
+    -moz-animation: moving-thread 8s infinite;
+    -o-animation: moving-thread 8s infinite;
+    animation: moving-thread 8s infinite;
+  }
+
+  &.thread-3 {
+    -webkit-animation: moving-thread 6s infinite;
+    -moz-animation: moving-thread 6s infinite;
+    -o-animation: moving-thread 6s infinite;
+    animation: moving-thread 6s infinite;
+  }
+
+  &.thread-4 {
+    -webkit-animation: moving-thread 12s infinite;
+    -moz-animation: moving-thread 12s infinite;
+    -o-animation: moving-thread 12s infinite;
+    animation: moving-thread 12s infinite;
+  }
+
+  &.thread-5 {
+    -webkit-animation: moving-thread 16s infinite;
+    -moz-animation: moving-thread 16s infinite;
+    -o-animation: moving-thread 16s infinite;
+    animation: moving-thread 16s infinite;
+  }
+}
+
+@-webkit-keyframes moving-thread {
+  0% {
+    width: 100%;
+  }
+
+  50% {
+    width: 100%;
+  }
+
+  80% {
+    width: 0px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@-moz-keyframes moving-thread {
+  0% {
+    width: 100%;
+  }
+
+  50% {
+    width: 100%;
+  }
+
+  80% {
+    width: 0px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@-o-keyframes moving-thread {
+  0% {
+    width: 100%;
+  }
+
+  50% {
+    width: 100%;
+  }
+
+  80% {
+    width: 0px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes moving-thread {
+  0% {
+    width: 100%;
+  }
+
+  50% {
+    width: 100%;
+  }
+
+  80% {
+    width: 0px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

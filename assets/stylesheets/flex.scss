@@ -1,0 +1,29 @@
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.d-flex-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.f-1 {
+  flex: 1;
+}
+
+.f-jc-left {
+  justify-content: left;
+}
+
+.f-jc-spacearound {
+  justify-content: space-around;  
+}
+
+.f-ai-normal {
+  align-items: normal;
+}
