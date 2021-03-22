@@ -21,5 +21,10 @@
     height: 100%;
     display: block;
     box-sizing: border-box;
+
+    &.active {
+      background-color: #8d46ac;
+      color: #ffffff;
+    }
   }
 }
