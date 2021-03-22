@@ -2,12 +2,15 @@
 
 @import 'margins';
 @import 'paddings';
+@import 'flex';
+@import 'borders';
 
 @import 'texts';
 @import 'buttons';
 @import 'headings';
 @import 'inputs';
-@import 'nav';
+@import 'navs';
+@import 'lines';
 
 html, body {
   padding: 0;
@@ -22,31 +25,21 @@ body {
   height: 100%;
 }
 
-// To-Do; Move the flex and width-heights
-.d-flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-
-.d-flex-col {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.f-1 {
-  flex: 1;
-}
-
+// To-Do; Move the width-heights
 .w-50 {
   width: 50%;
 }
 
+.w-60 {
+  width: 60%;
+}
+
 .w-100 {
   width: 100%;
+}
+
+.w-e16 {
+  width: 16em;
 }
 
 .h-100 {

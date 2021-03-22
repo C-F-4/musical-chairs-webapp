@@ -1,3 +1,52 @@
-<div class="container--profile mtb-60 p-20">
-  <h2>Player Profile</h2>
+<div class="container--profile p-20">
+  <div class="content--app-profile">
+    <div class="d-flex f-jc-left f-ai-normal">
+      <div class="app-sidebar">
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a class="sidebar-item-link" routerLink="/profile">Profile</a>
+          </li>
+          <li class="sidebar-list-item">
+            <a class="sidebar-item-link" routerLink="/settings">Settings</a>
+          </li>
+        </ul>
+      </div>
+      <div class="section--body f-1">
+        <div class="d-flex f-jc-spacearound f-ai-normal p-20">
+          <div class="form-left w-60">
+            <form action="" class="text-secondary" [formGroup]="formProfile" (ngSubmit)="onUpdateProfile($event)">
+              <h2 class="mb-20">Player Profile</h2>
+              <div class="form-group">
+                <label for="" class="email">Email Address</label>
+                <input type="email" name="" id="" formControlName="email">
+                <p class="info"></p>
+              </div>
+              <div class="form-group">
+                <label for="" class="email">First Name</label>
+                <input type="text" name="" id="" formControlName="firstname">
+                <p class="info"></p>
+              </div>
+              <div class="form-group">
+                <label for="" class="email">Last Name</label>
+                <input type="text" name="" id="" formControlName="lastname">
+                <p class="info"></p>
+              </div>
+              <div class="form-group">
+                <label for="" class="password">Password</label>
+                <input type="password" name="" id="" formControlName="pass">
+                <p class="info"></p>
+              </div>
+              <div class="btn-group">
+                <button type="submit" class="btn btn-primary btn-w2" [disabled]="!formProfile.valid">Update Profile</button>
+              </div>
+            </form>
+          </div>
+          <div class="form-right">
+            <img [src]="avatar" alt="Avatar">
+            <h3 class="text-center">{{ username }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
