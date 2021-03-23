@@ -59,6 +59,8 @@ export class UserService {
 
   // Temporary - treat as mock dataset for server
   private users: IUser[] = [];
+  public get userlist(): IUser[] { return this.users; }
+  public set userlist(users: IUser[]) { this.users.push(...users); }
   private async serverLogin(email: string, pass: string): Promise<IUser> {
     const user = this.users.find(user => user.email === email && user.password === pass);
     if (!user) {

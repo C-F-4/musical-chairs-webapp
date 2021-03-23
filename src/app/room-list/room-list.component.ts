@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomType } from './../enums';
-import { GameService } from './../services';
+import { GameService, LoggerService } from './../services';
 import { IGameroom } from './../interfaces';
 
 @Component({
@@ -12,7 +12,7 @@ export class RoomListComponent implements OnInit {
 
   gameRooms: IGameroom[] = [];
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private loggerService: LoggerService) { }
 
   ngOnInit(): void {
     this.gameRooms = this.gameService.GameRooms;
@@ -23,7 +23,7 @@ export class RoomListComponent implements OnInit {
   }
 
   onClick(event: any): void {
-    console.log(event?.type, event?.id);
+    this.loggerService.log(`${event?.type}, ${event?.id}`);
   }
 
 }

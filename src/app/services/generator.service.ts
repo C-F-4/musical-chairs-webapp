@@ -3,15 +3,16 @@ import { AvatarGenerator } from 'random-avatar-generator';
 import * as rug from "random-username-generator";
 import * as ing from "indian-name-generator";
 import { GameType } from './../enums';
-import { IGameroom } from './../interfaces';
-import { GameRoom } from './../models';
+import { IGameroom, IUser } from './../interfaces';
+import { GameRoom, User } from './../models';
+import { UserService, LoggerService } from '.';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneratorService {
 
-  constructor() { }
+  constructor(private userService: UserService, private loggerService: LoggerService) { }
 
   public static avatar(id: string): string {
     return new AvatarGenerator().generateRandomAvatar(id);
@@ -43,6 +44,27 @@ export class GeneratorService {
       gameRooms.push(new GameRoom(GameType.MusicalChairs));
     }
     return gameRooms;
+  }
+
+  public static populateGameRoom(users: IUser[], upperLimit: number, roomCount: number): IUser[] {
+    if (upperLimit * roomCount < users.length && upperLimit * roomCount + upperLimit + Math.floor(Math.random() * 10) + 1 < users.length) {
+      return [...users].slice(upperLimit * roomCount, upperLimit * roomCount + upperLimit + Math.floor(Math.random() * 10) + 1);
+    } else if (upperLimit < users.length) {
+      return [...users].slice(roomCount, upperLimit);
+    } else {
+      return [...users];
+    }
+  }
+
+  public generateUsers(count: number): void {
+    const emailRoot = 'Abhimanyu.Test';
+    const emailDomain = '@gmail.com';
+    const password = 'Password123#';
+    let failedUsers = 0;
+    for (let i = 0; i < count; i ++) {
+      this.userService.userlist = [new User(`${emailRoot}${i}${emailDomain}`, password)];
+    }
+    this.loggerService.log(`Mock Data Generated: ${failedUsers} of ${count} failed`);
   }
 
 }

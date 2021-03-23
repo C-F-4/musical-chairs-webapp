@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '.';
+import { AuthService, CommonService } from '.';
 import { Constants } from './../enums';
 
 @Injectable({
@@ -8,13 +8,15 @@ import { Constants } from './../enums';
 })
 export class AuthGuardService {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private commonService: CommonService) { }
 
   canActivate(): boolean {
     if (!this.authService.isAuthenticated()) {
+      this.commonService.showNavigation = false;  
       this.router.navigate([''], { queryParams: { [Constants.QpPage]: Constants.PageLogin } });
       return false;
     }
+    this.commonService.showNavigation = true;
     return true;
   }
 
