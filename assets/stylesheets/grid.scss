@@ -1,0 +1,50 @@
+.grid-small {
+  display: flex;
+  flex-wrap: wrap;
+	align-items: stretch;
+	justify-content: left;
+
+  .grid-card {
+    width: 25%;
+    min-width: 200px;
+    min-height: 200px;
+
+    &:nth-child(odd) { background-color: $color-tomato; }
+    &:nth-child(even) { background-color: $color-mediumseagreen; }
+    &:nth-child(3n) { background-color: $color-darkcyan; }
+    &:nth-child(4n) { background-color: $color-mediumorchid; }
+    &:nth-child(5n) { background-color: $color-dodgerblue; }
+    &:nth-child(6n) { background-color: $color-darkorange; }
+    &:nth-child(7n) { background-color: $color-firebrick; }
+    &:nth-child(8n) { background-color: $color-lightseagreen; }
+
+    &:hover:not(.disabled) {
+      cursor: pointer;
+      box-shadow: inset 0 0 0 10px $color-primary, inset 0 0 0 14px $color-white;
+    }
+
+    &.disabled:hover {
+      cursor: not-allowed;
+
+      a {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .grid-card-body {
+    padding: 24px;
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    // .grid-card & {
+    //   background-image: linear-gradient(130deg,#ff7a18,#af002d 41.07%,#319197 76.05%);
+    // }
+  }
+
+  .link-overlay {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
