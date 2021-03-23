@@ -253,6 +253,9 @@ Apache-2.0
 seedrandom
 MIT
 
+short-unique-id
+Apache-2.0
+
 tslib
 0BSD
 Copyright (c) Microsoft Corporation.

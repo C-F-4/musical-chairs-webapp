@@ -10,6 +10,10 @@
 
   &:disabled {
     opacity: 0.75;
+
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 
   &:hover:not(:disabled) {
@@ -25,6 +29,18 @@
       background-color: $color-secondary;
       color: $color-primary;
       border-color: $color-primary;
+    }
+  }
+
+  &.btn-secondary {
+    background-color: $color-tertiary;
+    color: $color-quaternary;
+    border-color: $color-tertiary;
+
+    &:hover:not(:disabled) {
+      background-color: $color-quaternary;
+      color: $color-tertiary;
+      border-color: $color-tertiary;
     }
   }
 
