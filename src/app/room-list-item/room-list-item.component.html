@@ -6,8 +6,8 @@
   </div>
 </ng-container>
 <ng-template #roomListItem>
-  <div class="grid-card-body">
-    <div class="d-flex f-jc-spacebetween">
+  <div class="grid-card-body d-flex-col f-jc-spacebetween">
+    <div class="w-100 d-flex f-jc-spacebetween">
       <div class="d-flex-col f-ai-normal">
         <h2>{{ gameRoom.gameType }}</h2>
         <p class="text-room-id">{{ gameRoom.publicRoomId }}</p>
@@ -16,7 +16,20 @@
         <h2 class="mlr-10">{{ gameRoom.players?.length || 0 }}</h2>
       </div>
     </div>
-    <div class="btn-group d-flex">
+    <div class="w-100 ptb-5 d-flex f-jc-spacebetween f-ai-normal">
+      <div class="game-info">
+        <h4>Game Stats:</h4>
+        <div class="stats-container">
+          <h5 class="plr-5">Round: #{{ (gameRoom.roundCount || 0) + 1 }}</h5>
+          <h5 class="plr-5">Eliminated Players: {{ gameRoom.eliminated?.length }}</h5>
+          <h5 class="plr-5">Active Players: {{ gameRoom.playing?.length }}</h5>
+        </div>
+      </div>
+      <div class="game-icon">
+        <img src="assets/images/game-mc.gif" alt="Game Icon">
+      </div>
+    </div>
+    <div class="btn-group w-100 d-flex">
       <button class="btn btn-primary f-1" (click)="onRoomAction(action.JoinRoom)" [disabled]="!(gameRoom.isActive && commonService.isJoinGameOn)" title="Join Game">Join Game</button>
       <button class="btn btn-secondary f-1" (click)="onRoomAction(action.SpectateRoom)" [disabled]="!gameRoom.isActive" title="Spectate Game">View Game</button>
     </div>

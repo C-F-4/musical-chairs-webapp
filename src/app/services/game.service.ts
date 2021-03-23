@@ -10,7 +10,7 @@ export class GameService {
   private gameRooms: IGameroom[];
 
   constructor() {
-    this.gameRooms = this.fetchGameRooms(15);
+    this.gameRooms = this.fetchGameRooms(3);
   }
 
   fetchGameRooms(count: number): IGameroom[] {
