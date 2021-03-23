@@ -1,14 +1,24 @@
-<ng-container *ngIf="isTypeCreateRoom; else roomListItem">
+<ng-container *ngIf="type === roomType.CreateRoom; else roomListItem">
   <div class="grid-card-body">
-    <a class="link-overlay link-disabled" routerLink="/game">
+    <a class="link-overlay link-disabled" (click)="onRoomAction(action.CreateRoom)">
       <span>Create New Gameroom</span>
     </a>
   </div>
 </ng-container>
 <ng-template #roomListItem>
   <div class="grid-card-body">
-    <a class="link-overlay" routerLink="/game">
-      <span>Room List Item</span>
-    </a>
+    <div class="d-flex f-jc-spacebetween">
+      <div class="d-flex-col f-ai-normal">
+        <h2>{{ gameRoom.gameType }}</h2>
+        <p class="text-room-id">{{ gameRoom.publicRoomId }}</p>
+      </div>
+      <div class="player-count">
+        <h2 class="mlr-10">{{ gameRoom.players?.length || 0 }}</h2>
+      </div>
+    </div>
+    <div class="btn-group d-flex">
+      <button class="btn btn-primary f-1" (click)="onRoomAction(action.JoinRoom)" [disabled]="!(gameRoom.isActive && commonService.isJoinGameOn)" title="Join Game">Join Game</button>
+      <button class="btn btn-secondary f-1" (click)="onRoomAction(action.SpectateRoom)" [disabled]="!gameRoom.isActive" title="Spectate Game">View Game</button>
+    </div>
   </div>
 </ng-template>

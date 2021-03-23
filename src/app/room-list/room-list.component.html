@@ -1,14 +1,7 @@
 <div class="container--game-list mb-20">
   <h2 class="mb-20">Game Rooms</h2>
   <div class="content--list grid-small">
-    <!-- <div class="grid-card d-flex disabled">
-      <div class="grid-card-body">
-        <a class="link-overlay link-disabled" routerLink="/game">
-          <span>Create New Gameroom</span>
-        </a>
-      </div>
-    </div> -->
-    <app-room-list-item class="grid-card d-flex disabled" [type]="roomType.CreateRoom"></app-room-list-item>
-    <app-room-list-item class="grid-card d-flex" *ngFor="let i of [1,2,3,4,5,6,7]"></app-room-list-item>
+    <app-room-list-item class="grid-card d-flex" [type]="roomType.CreateRoom" (onClick)="onClick($event)"></app-room-list-item>
+    <app-room-list-item class="grid-card d-flex" *ngFor="let gameRoom of gameRooms" [id]="gameRoom.id" (onClick)="onClick($event)"></app-room-list-item>
   </div>
 </div>

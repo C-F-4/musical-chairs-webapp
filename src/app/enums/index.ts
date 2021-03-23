@@ -1,3 +1,4 @@
 export * from "./constants.enum";
-export * from "./room-type.enum";
+export * from "./game.enum";
+export * from "./room.enum";
 export * from "./theme.enum";

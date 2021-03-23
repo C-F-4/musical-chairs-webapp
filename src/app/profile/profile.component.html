@@ -1,6 +1,6 @@
 <div class="container--profile p-20">
   <div class="content--app-profile">
-    <div class="d-flex f-jc-left f-ai-normal">
+    <div class="app-profile-wrapper d-flex f-jc-left f-ai-normal">
       <div class="app-sidebar">
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
@@ -12,8 +12,8 @@
         </ul>
       </div>
       <div class="section--body f-1">
-        <div class="d-flex f-jc-spacearound f-ai-normal p-20">
-          <div class="form-left w-60">
+        <div class="profile-form d-flex f-jc-spacearound f-ai-normal p-20">
+          <div class="form-left">
             <form action="" class="text-secondary" [formGroup]="formProfile" (ngSubmit)="onUpdateProfile($event)">
               <h2 class="mb-20">Player Profile</h2>
               <div class="form-group">
@@ -46,7 +46,7 @@
               </div>
             </form>
           </div>
-          <div class="form-right">
+          <div class="form-right p-20">
             <img [src]="avatar" alt="Avatar">
             <h3 class="text-center text-username">{{ username }}</h3>
           </div>

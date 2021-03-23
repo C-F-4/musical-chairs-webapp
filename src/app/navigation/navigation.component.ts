@@ -21,11 +21,11 @@ export class NavigationComponent implements OnInit {
   }
 
   get username(): string {
-    return this.userService.loggedUser?.username;
+    return this.userService.loggedUser?.username || '';
   }
 
   get avatar(): string {
-    return this.userService.loggedUser?.avatar;
+    return this.userService.loggedUser?.avatar || '';
   }
 
   async onLogout(evt: Event): Promise<void> {

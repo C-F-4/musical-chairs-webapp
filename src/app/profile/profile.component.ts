@@ -41,11 +41,11 @@ export class ProfileComponent implements OnInit {
   }
 
   get avatar(): string {
-    return this.user.avatar;
+    return this.user.avatar || '';
   }
 
   get username(): string {
-    return this.user.username;
+    return this.user.username || '';
   }
 
   onUpdateProfile(evt: Event): void {
