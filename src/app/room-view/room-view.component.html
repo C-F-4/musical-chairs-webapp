@@ -1,1 +1,12 @@
-<p>room-view works!</p>
+<div class="container--game p-20">
+  <h2 class="mb-20">Player Profile</h2>
+  <div class="form-group">
+    <div class="text">
+      &larr;<a class="text-link" routerLink="/dashboard">Go Back to Dashboard</a>
+    </div>
+
+    {{ gameRoomData?.id }}
+    {{ gameRoomData?.publicRoomId }}
+    {{ gameRoomData?.players?.length }}
+  </div>
+</div>

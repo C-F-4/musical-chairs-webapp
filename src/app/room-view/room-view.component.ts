@@ -1,4 +1,7 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { IGameroom } from './../interfaces';
+import { GameService } from './../services';
 
 @Component({
   selector: 'app-room-view',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoomViewComponent implements OnInit {
 
-  constructor() { }
+  private gameData: IGameroom = {};
+  public get gameRoomData(): IGameroom {
+    return this.gameData;
+  }
+
+  constructor(private route: ActivatedRoute, private gameService: GameService) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params: Params) => {
+      this.gameData = this.gameService.getGameRoomByPublicId(params.get('id'));
+    });
   }
 
 }

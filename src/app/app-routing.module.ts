@@ -29,7 +29,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'game',
+    path: 'game/:id',
     component: RoomViewComponent,
     canActivate: [AuthGuardService]
   },

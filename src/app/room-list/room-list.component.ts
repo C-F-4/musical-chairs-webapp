@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { RoomType } from './../enums';
+import { RoomAction, RoomType } from './../enums';
 import { GameService, LoggerService } from './../services';
 import { IGameroom } from './../interfaces';
 
@@ -12,7 +13,7 @@ export class RoomListComponent implements OnInit {
 
   gameRooms: IGameroom[] = [];
 
-  constructor(private gameService: GameService, private loggerService: LoggerService) { }
+  constructor(private router: Router, private gameService: GameService, private loggerService: LoggerService) { }
 
   ngOnInit(): void {
     this.gameRooms = this.gameService.GameRooms;
@@ -23,7 +24,16 @@ export class RoomListComponent implements OnInit {
   }
 
   onClick(event: any): void {
-    this.loggerService.log(`${event?.type}, ${event?.id}`);
+    if (event.type === RoomAction.CreateRoom || event.type === RoomAction.JoinRoom) {
+      this.loggerService.log(`Unsupported Action`);
+    } else if (event.type === RoomAction.SpectateRoom) {
+      this.loggerService.log(`Spectating Game with id ${event.id}`);
+      const gameRoom = this.gameService.getGameRoomById(event.id);
+      this.loggerService.log(`Valid Game Room. Joining: ${gameRoom.publicRoomId}`);
+      this.router.navigate([`game/${gameRoom.publicRoomId}`]);
+    } else {
+      this.loggerService.log(`Unsupported Action Identified: ${event.id}`);
+    }
   }
 
 }
