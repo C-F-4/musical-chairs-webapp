@@ -1,1 +1,14 @@
-<p>room-list-item works!</p>
+<ng-container *ngIf="isTypeCreateRoom; else roomListItem">
+  <div class="grid-card-body">
+    <a class="link-overlay link-disabled" routerLink="/game">
+      <span>Create New Gameroom</span>
+    </a>
+  </div>
+</ng-container>
+<ng-template #roomListItem>
+  <div class="grid-card-body">
+    <a class="link-overlay" routerLink="/game">
+      <span>Room List Item</span>
+    </a>
+  </div>
+</ng-template>
