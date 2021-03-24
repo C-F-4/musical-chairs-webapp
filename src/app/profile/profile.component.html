@@ -1,6 +1,6 @@
 <div class="container--profile p-20">
   <div class="content--app-profile">
-    <div class="app-profile-wrapper d-flex f-jc-left f-ai-normal">
+    <div class="app-profile-wrapper d-flex f-jc-left f-ai-normal" *ngIf="!isViewMode; else viewMode">
       <div class="app-sidebar">
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
@@ -76,5 +76,15 @@
         </ng-template>
       </div>
     </div>
+    <ng-template #viewMode>
+      <div class="app-profile-wrapper d-flex-col">
+        <div class="text mtb-10">
+          &larr;<a class="text-link" routerLink="/dashboard">Go Back to Dashboard</a>
+        </div>
+        <img [src]="guestUser.avatar" alt="Avatar" class="user-avatar">
+        <h3 class="text-center text-username">{{ guestUser.username }}</h3>
+        <h3>{{ guestUser.firstname }}  {{ guestUser.lastname }}</h3>
+      </div>
+    </ng-template>
   </div>
 </div>

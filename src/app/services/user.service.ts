@@ -63,6 +63,14 @@ export class UserService {
     }
   }
 
+  public getUserByUsername(username: string): IUser {
+    const user = this.users.find(userEl => userEl.username === username);
+    if (!user) {
+      throw new Error('User Not Found');
+    }
+    return user;
+  }
+
   private async serverLogin(email: string, pass: string): Promise<IUser> {
     const user = this.users.find(userEl => userEl.email === email && userEl.password === pass);
     if (!user) {

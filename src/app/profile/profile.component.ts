@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { Tabname } from '../enums';
+import { AlertType, Tabname } from '../enums';
 import { IUser } from '../interfaces';
-import { UserService } from '../services';
+import { NotificationService, UserService } from '../services';
 
 @Component({
   selector: 'app-profile',
@@ -17,16 +17,35 @@ export class ProfileComponent implements OnInit {
   formProfile!: FormGroup;
   readonly defaultTab = Tabname.Profile;
   tabSelected = this.defaultTab;
+  isViewMode = false;
+  guestUser: IUser = {};
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private userService: UserService
+    private router: Router,
+    private notificationService: NotificationService,
+    private userService: UserService,
   ) {
     this.user = this.userService.loggedUser;
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params: Params) => {
+      const selectedUser = params.get('userId');
+      try {
+        if (selectedUser && selectedUser !== this.user.username) {
+          this.isViewMode = true;
+          this.guestUser = this.userService.getUserByUsername(selectedUser);
+        } else {
+          this.isViewMode = false;
+          this.guestUser = {};
+        }
+      } catch (err) {
+        this.notificationService.addBasicNotification(AlertType.FormFailure, 'User not Found. Redirecting.');
+        this.router.navigate(['/profile']);
+      }
+    });
     this.route.queryParamMap.subscribe((params: Params) => {
       const selectedTab = (params.get('tab'));
       if (selectedTab) {
