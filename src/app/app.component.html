@@ -1,2 +1,5 @@
 <app-navigation *ngIf="showNav()"></app-navigation>
+<div *ngIf="notificationService.alertList.length" class="notification-wrapper">
+  <app-alert *ngFor="let alert of notificationService.alertList" [alertId]="alert.id || ''"></app-alert>
+</div>
 <router-outlet></router-outlet>

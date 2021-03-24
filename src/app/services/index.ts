@@ -6,4 +6,5 @@ export * from './generator.service';
 export * from './helper.service';
 export * from './logger.service';
 export * from './login-auth-guard.service';
+export * from './notification.service';
 export * from './user.service';

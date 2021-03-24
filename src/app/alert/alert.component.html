@@ -1,0 +1,3 @@
+<div class="alert-wrapper" *ngIf="alert.isActive">
+  <h4 class="alert text-secondary" [ngClass]="[getAlertClass()]">{{ alert.text }}</h4>
+</div>

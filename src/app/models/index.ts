@@ -1,3 +1,4 @@
+export * from './alert';
 export * from './game-room';
 export * from './user';
 export * from './user-game-history';

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Constants } from './../enums';
-import { CommonService, LoggerService, UserService } from './../services';
+import { AlertType, Constants } from './../enums';
+import { CommonService, LoggerService, NotificationService, UserService } from './../services';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private commonService: CommonService,
     private loggerService: LoggerService,
+    private notificationService: NotificationService,
     private userService: UserService
   ) { }
 
@@ -44,10 +45,12 @@ export class LoginComponent implements OnInit {
     const pass = this.formLogin.controls.pass.value;
     const isLoginSuccess = await this.userService.login(email, pass);
     if (!isLoginSuccess) {
+      this.notificationService.addBasicNotification(AlertType.FormFailure, 'Alert: User Log In Failure!');
       this.loggerService.log('ERROR: Login Failed');
       return;
     }
     this.loggerService.log(`LOG: Login Success`);
+    this.notificationService.addBasicNotification(AlertType.FormSuccess, 'Alert: User Logged In Successfully!');
     this.formLogin.reset();
     this.router.navigate(['dashboard']);
   }

@@ -16,6 +16,7 @@ import { RoomViewItemComponent } from './room-view-item/room-view-item.component
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameHistoryComponent } from './game-history/game-history.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GameHistoryComponent } from './game-history/game-history.component';
     RoomViewItemComponent,
     NavigationComponent,
     DashboardComponent,
-    GameHistoryComponent
+    GameHistoryComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

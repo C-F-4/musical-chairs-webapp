@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Constants } from './../enums';
-import { CommonService, LoggerService, UserService } from './../services';
+import { AlertType, Constants } from './../enums';
+import { CommonService, LoggerService, NotificationService, UserService } from './../services';
 
 @Component({
   selector: 'app-register',
@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private commonService: CommonService,
     private loggerService: LoggerService,
+    private notificationService: NotificationService,
     private userService: UserService
   ) { }
 
@@ -44,9 +45,11 @@ export class RegisterComponent implements OnInit {
     const pass = this.formRegister.controls.pass.value;
     const isRegisterSuccess = await this.userService.register(email, pass);
     if (!isRegisterSuccess) {
+      this.notificationService.addBasicNotification(AlertType.FormFailure, 'Alert: Registration Failed!');
       this.loggerService.log('ERROR: Register Failure');
       return;
     }
+    this.notificationService.addBasicNotification(AlertType.FormSuccess, 'Alert: User Registered Successfully!');
     this.loggerService.log('LOG: User Created');
     this.formRegister.reset();
     if (!this.commonService.isAutoLoginOnRegisterOn) {

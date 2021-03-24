@@ -1,3 +1,4 @@
+export * from './ialert';
 export * from './igameroom';
 export * from './iuser';
 export * from './iuser-game-history';
