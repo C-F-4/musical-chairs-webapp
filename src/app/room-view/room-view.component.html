@@ -13,11 +13,11 @@
     <div class="text mtb-10">
       &larr;<a class="text-link" routerLink="/dashboard">Go Back to Dashboard</a>
     </div>
-    <div class="game-view grid-small">
+    <div class="game-view grid grid-large">
       <div class="grid-card d-flex" *ngFor="let player of gameRoomData?.players">
         <div class="grid-card-body text-center">
-          <img [src]="player.avatar" [alt]="player.username">
-          <h3>{{ player.username }}</h3>
+          <img class="grid-card-img" [src]="player.avatar" [alt]="player.username">
+          <h3 class="grid-card-header">{{ player.username }}</h3>
         </div>
       </div>
     </div>
