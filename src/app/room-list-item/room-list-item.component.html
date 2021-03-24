@@ -14,7 +14,7 @@
         <p class="text-room-id">{{ gameRoom.publicRoomId }}</p>
       </div>
       <div class="player-count">
-        <h2 class="mlr-10">{{ gameRoom.players?.length || 0 }}</h2>
+        <h2 class="mlr-10">{{ gameRoom.playing?.length || 0 }}/{{ gameRoom.players?.length || 0 }}</h2>
       </div>
     </div>
     <div class="w-100 ptb-5 d-flex f-jc-spacebetween f-ai-normal">

@@ -29,7 +29,7 @@ export class GameService {
 
   private populateGameRooms(): void {
     for (let i = 0; i < this.gameRooms.length; i ++) {
-      this.gameRooms[i].playing = this.gameRooms[i].players = GeneratorService.populateGameRoom(
+      this.gameRooms[i].playing = [...this.gameRooms[i].players] = GeneratorService.populateGameRoom(
         [...this.userService.userlist], 50, i
       );
     }
