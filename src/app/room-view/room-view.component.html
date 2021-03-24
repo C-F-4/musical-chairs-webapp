@@ -19,6 +19,7 @@
         <div class="grid-card-body text-center">
           <img class="grid-card-img" [src]="player.avatar" [alt]="player.username">
           <h3 class="grid-card-header">{{ player.username }}</h3>
+          <p class="text" *ngIf="gameRoomData?.winnerId">{{ gameRoomData?.metadata?.winnerChairIdx + 1 }}</p>
         </div>
       </div>
     </div>

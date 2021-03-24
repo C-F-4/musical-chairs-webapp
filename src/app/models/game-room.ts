@@ -14,6 +14,7 @@ export class GameRoom implements IGameroom {
   roundCount: number;
   eliminated: IUser[];
   playing: IUser[];
+  metadata?: any;
 
   constructor(gameType: GameType) {
     this.id = uuidv4();
@@ -25,6 +26,7 @@ export class GameRoom implements IGameroom {
     this.roundCount = 0;
     this.eliminated = [];
     this.playing = [];
+    this.metadata = {};
   }
 
 }

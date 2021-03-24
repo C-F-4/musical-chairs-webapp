@@ -11,4 +11,5 @@ export interface IGameroom {
   roundCount?: number;
   eliminated?: IUser[];
   playing?: IUser[];
+  metadata?: any;
 }

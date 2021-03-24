@@ -138,6 +138,12 @@ export class GameService {
             game.winnerId = game.playing[0].id;
             game.isActive = !game.isActive;
             clearInterval(this.gameRoomIntervals[game.publicRoomId || 'unknown']);
+            game.metadata = {
+              winnerChairIdx: game.players?.findIndex(gamePlayer => gamePlayer.id === game.winnerId),
+            };
+            if (game.players) {
+              this.loggerService.log(game.players[game.metadata?.winnerChairIdx]);
+            }
           } else {
             if (typeof game.roundCount === 'number') { game.roundCount += 1; }
           }
