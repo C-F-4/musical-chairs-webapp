@@ -122,12 +122,12 @@ export class GameService {
     this.loggerService.log(`LOG: Game Started: ${game.publicRoomId}`);
     let ctr = 0;
     let playerIdx = 0;
-    const idx = game.publicRoomId;
-    if (idx) {
+    const publicRoomId = game.publicRoomId;
+    if (publicRoomId) {
       if (typeof game.roundCount === 'number') {
         game.roundCount += 1;
       }
-      this.gameRoomIntervals[idx] = setInterval(() => {
+      this.gameRoomIntervals[publicRoomId] = setInterval(() => {
         if (game.playing && game.playing.length > 1 && playerIdx < game.playing.length && game.playing[playerIdx]) {
           this.loggerService.log(`Eliminating ${playerIdx}, ${game.playing[playerIdx].username}`);
           game = this.eliminate(game, game.playing[playerIdx], playerIdx);
@@ -136,9 +136,13 @@ export class GameService {
         } else {
           if (game.playing?.length === 1) {
             game.winnerId = game.playing[0].id;
+            game.isActive = !game.isActive;
+            clearInterval(this.gameRoomIntervals[game.publicRoomId || 'unknown']);
+          } else {
+            if (typeof game.roundCount === 'number') { game.roundCount += 1; }
           }
-          game.isActive = !game.isActive;
-          clearInterval(this.gameRoomIntervals[game.publicRoomId || 'unknown']);
+          ctr = 0;
+          playerIdx = 0;
         }
       }, 1000);
     }
