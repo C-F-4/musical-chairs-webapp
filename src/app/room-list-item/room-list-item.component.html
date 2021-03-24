@@ -21,7 +21,7 @@
       <div class="game-info">
         <h4>Game Stats:</h4>
         <div class="stats-container">
-          <h5 class="plr-5">Round: #{{ (gameRoom.roundCount || 0) + 1 }}</h5>
+          <h5 class="plr-5">Round: #{{ (gameRoom.roundCount === 0) ? 'Not Started' : gameRoom.roundCount }}</h5>
           <h5 class="plr-5">Eliminated Players: {{ gameRoom.eliminated?.length }}</h5>
           <h5 class="plr-5">Active Players: {{ gameRoom.playing?.length }}</h5>
         </div>

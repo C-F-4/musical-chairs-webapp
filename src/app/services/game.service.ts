@@ -124,6 +124,9 @@ export class GameService {
     let playerIdx = 0;
     const idx = game.publicRoomId;
     if (idx) {
+      if (typeof game.roundCount === 'number') {
+        game.roundCount += 1;
+      }
       this.gameRoomIntervals[idx] = setInterval(() => {
         if (game.playing && game.playing.length > 1 && playerIdx < game.playing.length && game.playing[playerIdx]) {
           this.loggerService.log(`Eliminating ${playerIdx}, ${game.playing[playerIdx].username}`);
@@ -135,9 +138,6 @@ export class GameService {
             game.winnerId = game.playing[0].id;
           }
           game.isActive = !game.isActive;
-          if (typeof game.roundCount === 'number') {
-            game.roundCount += 1;
-          }
           clearInterval(this.gameRoomIntervals[game.publicRoomId || 'unknown']);
         }
       }, 1000);
