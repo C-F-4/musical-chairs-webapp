@@ -1,0 +1,25 @@
+.notification-wrapper {
+  position: fixed;
+  z-index: 10;
+  right: 10px;
+  bottom: 5px;
+}
+
+.alert-wrapper {
+  .alert {
+    padding: 10px;
+    border: 2.5px solid;
+    min-width: 300px;
+    text-align: center;
+  }
+
+  .alert-error {
+    background: rgb(247, 154, 154);
+    border-color: red;
+  }
+
+  .alert-success {
+    background-color: greenyellow;
+    border-color: green;
+  }
+}
