@@ -13,7 +13,7 @@ export class RoomListItemComponent implements OnInit {
 
   @Input() type: RoomType = RoomType.GameRoom;
   @Input() id = '';
-  @Output() onClick = new EventEmitter<any>();
+  @Output() actionOnClick = new EventEmitter<any>();
   public gameRoom: IGameroom = {};
 
   constructor(public commonService: CommonService, private gameService: GameService) { }
@@ -33,7 +33,7 @@ export class RoomListItemComponent implements OnInit {
   }
 
   public onRoomAction(action: RoomAction): void {
-    this.onClick.emit({ type: action, id: this.id });
+    this.actionOnClick.emit({ type: action, id: this.id });
   }
 
   // public createRoom(): void {

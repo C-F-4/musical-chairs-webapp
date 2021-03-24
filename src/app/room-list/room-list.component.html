@@ -4,7 +4,7 @@
     <span class="text text-right"><a class="text-link" routerLink="/profile">View Profile</a>&rarr;</span>
   </h2>
   <div class="content--list grid grid-small">
-    <app-room-list-item class="grid-card d-flex" [type]="roomType.CreateRoom" (onClick)="onClick($event)"></app-room-list-item>
-    <app-room-list-item class="grid-card d-flex" *ngFor="let gameRoom of gameRooms" [id]="gameRoom.id || ''" (onClick)="onClick($event)"></app-room-list-item>
+    <app-room-list-item class="grid-card d-flex" [type]="roomType.CreateRoom" (actionOnClick)="onClick($event)"></app-room-list-item>
+    <app-room-list-item class="grid-card d-flex" *ngFor="let gameRoom of gameRooms" [id]="gameRoom.id || ''" (actionOnClick)="onClick($event)"></app-room-list-item>
   </div>
 </div>

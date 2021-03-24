@@ -13,7 +13,7 @@ import { CommonService, LoggerService, UserService } from './../services';
 export class LoginComponent implements OnInit {
 
   readonly qpRegisterParams = {
-    [Constants.QpPage]:Constants.PageRegister
+    [Constants.QpPage]: Constants.PageRegister
   };
   formLogin!: FormGroup;
 
@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
   }
 
   async onLogin(): Promise<void> {
-    const email = this.formLogin.controls['email'].value;
-    const pass = this.formLogin.controls['pass'].value;
+    const email = this.formLogin.controls.email.value;
+    const pass = this.formLogin.controls.pass.value;
     const isLoginSuccess = await this.userService.login(email, pass);
     if (!isLoginSuccess) {
       this.loggerService.log('ERROR: Login Failed');
