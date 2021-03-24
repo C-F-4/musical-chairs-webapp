@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { LoggerService } from '.';
 import { IUser } from '../interfaces';
 import { User } from './../models';
@@ -8,14 +9,19 @@ import { User } from './../models';
 })
 export class UserService {
 
-  private user: any;
-  get loggedUser(): IUser {
+  public get loggedUser(): IUser {
     return this.user;
   }
 
+  // Temporary - treat as mock dataset for server
+  private user: any;
+  private users: IUser[] = [];
+  public get userlist(): IUser[] { return this.users; }
+  public set userlist(users: IUser[]) { this.users.push(...users); }
+
   constructor(private loggerService: LoggerService) { }
 
-  async register(email: string, pass: string): Promise<boolean> {
+  public async register(email: string, pass: string): Promise<boolean> {
     try {
       const doesUserExist = await this.checkIfExists(email);
       if (!doesUserExist) {
@@ -30,7 +36,7 @@ export class UserService {
     }
   }
 
-  async login(email: string, pass: string): Promise<boolean> {
+  public async login(email: string, pass: string): Promise<boolean> {
     try {
       this.user = await this.serverLogin(email, pass);
       return true;
@@ -40,7 +46,7 @@ export class UserService {
     }
   }
 
-  async logout(): Promise<boolean> {
+  public async logout(): Promise<boolean> {
     try {
       if (!this.user) {
         this.loggerService.log('ERROR: Already Logged Out!');
@@ -57,20 +63,18 @@ export class UserService {
     }
   }
 
-  // Temporary - treat as mock dataset for server
-  private users: IUser[] = [];
-  public get userlist(): IUser[] { return this.users; }
-  public set userlist(users: IUser[]) { this.users.push(...users); }
   private async serverLogin(email: string, pass: string): Promise<IUser> {
-    const user = this.users.find(user => user.email === email && user.password === pass);
+    const user = this.users.find(userEl => userEl.email === email && userEl.password === pass);
     if (!user) {
       throw new Error('User Not Found');
     }
     return user;
   }
+
   private async serverLogout(userId: string): Promise<boolean> {
     return true;
   }
+
   private async checkIfExists(email: string): Promise<boolean> {
     return !!this.users.find(user => user.email === email);
   }

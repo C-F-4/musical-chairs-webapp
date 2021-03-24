@@ -1,4 +1,4 @@
 export enum Tabname {
-  Profile = "Profile",
-  Settings = "Settings"
+  Profile = 'Profile',
+  Settings = 'Settings'
 }

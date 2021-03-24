@@ -1,4 +1,3 @@
-import { CommonService } from './../services/common.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private commonService: CommonService) { }
+  constructor() { }
 
   ngOnInit(): void { }
 

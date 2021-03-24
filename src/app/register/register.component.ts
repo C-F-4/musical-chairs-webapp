@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { CommonService, LoggerService, UserService } from './../services';
 import { Constants } from './../enums';
+import { CommonService, LoggerService, UserService } from './../services';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ import { Constants } from './../enums';
 export class RegisterComponent implements OnInit {
 
   readonly qpLoginParams = {
-    [Constants.QpPage]:Constants.PageLogin
+    [Constants.QpPage]: Constants.PageLogin
   };
   formRegister!: FormGroup;
 
@@ -40,8 +40,8 @@ export class RegisterComponent implements OnInit {
   }
 
   async onRegister(): Promise<void> {
-    const email = this.formRegister.controls['email'].value;
-    const pass = this.formRegister.controls['pass'].value;
+    const email = this.formRegister.controls.email.value;
+    const pass = this.formRegister.controls.pass.value;
     const isRegisterSuccess = await this.userService.register(email, pass);
     if (!isRegisterSuccess) {
       this.loggerService.log('ERROR: Register Failure');

@@ -1,5 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 import ShortUniqueId from 'short-unique-id';
+
 import { GameType } from './../enums';
 import { IGameroom, IUser } from './../interfaces';
 
@@ -13,7 +14,7 @@ export class GameRoom implements IGameroom {
   roundCount: number;
   eliminated: IUser[];
   playing: IUser[];
-  
+
   constructor(gameType: GameType) {
     this.id = uuidv4();
     this.publicRoomId = (new ShortUniqueId())();

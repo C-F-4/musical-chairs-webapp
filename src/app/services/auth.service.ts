@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { UserService } from '.';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class AuthService {
 
   constructor(private userService: UserService) { }
 
-  isAuthenticated(): boolean {
+  public isAuthenticated(): boolean {
     if (this.userService.loggedUser?.id) {
       return true;
     }

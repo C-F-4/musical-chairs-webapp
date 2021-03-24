@@ -1,7 +1,8 @@
-import { v4 as uuidv4 } from "uuid";
-import { GeneratorService } from './../services';
-import { IUser, IUserGameHistory, IUserSettings } from "../interfaces";
+import { v4 as uuidv4 } from 'uuid';
+
 import { UserSettings } from '.';
+import { IUser, IUserGameHistory, IUserSettings } from '../interfaces';
+import { GeneratorService } from './../services';
 
 export class User implements IUser {
   id: string;
@@ -14,7 +15,7 @@ export class User implements IUser {
   gameHistory: IUserGameHistory[];
   settings: IUserSettings;
   password: string;
-  
+
   constructor(email: string, password: string) {
     this.id = uuidv4();
     this.email = email;

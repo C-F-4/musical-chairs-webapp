@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { GeneratorService, UserService } from '.';
 import { IGameroom } from './../interfaces';
 
@@ -15,13 +16,15 @@ export class GameService {
     this.populateGameRooms();
   }
 
-  fetchGameRooms(count: number): IGameroom[] {
+  private fetchGameRooms(count: number): IGameroom[] {
     return GeneratorService.generateGameRooms(count);
   }
 
-  populateGameRooms(): void {
+  private populateGameRooms(): void {
     for (let i = 0; i < this.gameRooms.length; i ++) {
-      this.gameRooms[i].playing = this.gameRooms[i].players = GeneratorService.populateGameRoom([...this.userService.userlist], 50, i);
+      this.gameRooms[i].playing = this.gameRooms[i].players = GeneratorService.populateGameRoom(
+        [...this.userService.userlist], 50, i
+      );
     }
   }
 
@@ -30,7 +33,7 @@ export class GameService {
   }
 
   public getGameRoomById(id: string): IGameroom {
-    const gameRoom = this.gameRooms.find(gameRoom => gameRoom.id === id);
+    const gameRoom = this.gameRooms.find(gameRoomEl => gameRoomEl.id === id);
     if (!gameRoom) {
       throw new Error(`Game Room Not Found: ${id}`);
     } else {
@@ -41,13 +44,18 @@ export class GameService {
   }
 
   public getGameRoomByPublicId(publicId: string): IGameroom {
-    const gameRoom = this.gameRooms.find(gameRoom => gameRoom.publicRoomId === publicId);
+    const gameRoom = this.gameRooms.find(gameRoomEl => gameRoomEl.publicRoomId === publicId);
     if (!gameRoom) {
       throw new Error(`Game Room Not Found: ${publicId}`);
     } else {
       // this.notificationService.addBasicNotification(AlertType.formSuccess, 'Alert: Ingredient GET Success');
     }
     return gameRoom;
+  }
+
+  public startGame(gameRoomId: string): boolean {
+    // To-Do
+    return true;
   }
 
 }

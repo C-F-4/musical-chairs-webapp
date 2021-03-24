@@ -8,6 +8,8 @@ import { CommonService } from './services';
 })
 export class AppComponent {
 
+  public title = 'musical-chairs-game';
+
   constructor(private commonService: CommonService) { }
 
   showNav(): boolean {

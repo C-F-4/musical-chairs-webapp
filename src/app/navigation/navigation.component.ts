@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoggerService, UserService } from './../services';
 import { Constants } from './../enums';
+import { LoggerService, UserService } from './../services';
 
 @Component({
   selector: 'app-navigation',

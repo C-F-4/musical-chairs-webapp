@@ -1,6 +1,7 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
+
 import { Theme } from './../enums';
-import { IUserSettings } from "../interfaces";
+import { IUserSettings } from '../interfaces';
 
 export class UserSettings implements IUserSettings {
   id: string;

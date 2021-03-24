@@ -1,5 +1,6 @@
-import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+
 import { IGameroom } from './../interfaces';
 import { GameService } from './../services';
 

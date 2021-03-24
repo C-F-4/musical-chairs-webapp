@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AvatarGenerator } from 'random-avatar-generator';
-import * as rug from "random-username-generator";
-import * as ing from "indian-name-generator";
+import * as rug from 'random-username-generator';
+import * as ing from 'indian-name-generator';
+
+import { UserService, LoggerService } from '.';
 import { GameType } from './../enums';
 import { IGameroom, IUser } from './../interfaces';
 import { GameRoom, User } from './../models';
-import { UserService, LoggerService } from '.';
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +61,7 @@ export class GeneratorService {
     const emailRoot = 'Abhimanyu.Test';
     const emailDomain = '@gmail.com';
     const password = 'Password123#';
-    let failedUsers = 0;
+    const failedUsers = 0;
     for (let i = 0; i < count; i ++) {
       this.userService.userlist = [new User(`${emailRoot}${i}${emailDomain}`, password)];
     }

@@ -1,9 +1,9 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { CommonService, LoggerService, UserService } from './../services';
 import { Constants } from './../enums';
+import { CommonService, LoggerService, UserService } from './../services';
 
 @Component({
   selector: 'app-login',

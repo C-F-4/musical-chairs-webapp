@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
 import { RoomAction, RoomType } from './../enums';
-import { GameService, LoggerService } from './../services';
 import { IGameroom } from './../interfaces';
+import { GameService, LoggerService } from './../services';
 
 @Component({
   selector: 'app-room-list',

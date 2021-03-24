@@ -1,4 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
+
 import { IUserGameHistory } from '../interfaces';
 
 export class UserGameHistory implements IUserGameHistory {

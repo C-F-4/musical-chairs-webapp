@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { RoomType, RoomAction } from './../enums';
 import { IGameroom } from './../interfaces';
 import { CommonService, GameService } from './../services';
@@ -11,7 +12,7 @@ import { CommonService, GameService } from './../services';
 export class RoomListItemComponent implements OnInit {
 
   @Input() type: RoomType = RoomType.GameRoom;
-  @Input() id: string = '';
+  @Input() id = '';
   @Output() onClick = new EventEmitter<any>();
   public gameRoom: IGameroom = {};
 

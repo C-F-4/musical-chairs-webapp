@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+
 import { Tabname } from '../enums';
 import { IUser } from '../interfaces';
 import { UserService } from '../services';
