@@ -7,7 +7,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RoomViewComponent } from './room-view/room-view.component';
-import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
@@ -38,11 +37,11 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuardService]
   },
-  {
-    path: 'settings',
-    component: SettingsComponent,
-    canActivate: [AuthGuardService]
-  },
+  // {
+  //   path: 'settings',
+  //   component: SettingsComponent,
+  //   canActivate: [AuthGuardService]
+  // },
   {
     path: '**',
     redirectTo: '',

@@ -4,15 +4,24 @@
       <div class="app-sidebar">
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
-            <a class="sidebar-item-link" routerLinkActive="active" routerLink="/profile">Profile</a>
+            <a class="sidebar-item-link" routerLinkActive="active"
+              [routerLink]="['/profile']"
+              [routerLinkActiveOptions]="{exact: true}">
+              Profile
+            </a>
           </li>
           <li class="sidebar-list-item">
-            <a class="sidebar-item-link" routerLinkActive="active" routerLink="/settings">Settings</a>
+            <a class="sidebar-item-link" routerLinkActive="active"
+              [routerLink]="['/profile']"
+              [queryParams]="{ tab: tabname.Settings }"
+              [routerLinkActiveOptions]="{exact: true}">
+              Settings
+            </a>
           </li>
         </ul>
       </div>
       <div class="section--body f-1">
-        <div class="profile-form d-flex f-jc-spacearound f-ai-normal p-20">
+        <div class="profile-form d-flex f-jc-spacearound f-ai-normal p-20" *ngIf="tabSelected === tabname.Profile; else sectionSettings">
           <div class="form-left">
             <form action="" class="text-secondary" [formGroup]="formProfile" (ngSubmit)="onUpdateProfile($event)">
               <h2 class="mb-20">Player Profile</h2>
@@ -51,6 +60,20 @@
             <h3 class="text-center text-username">{{ username }}</h3>
           </div>
         </div>
+        <ng-template #sectionSettings>
+          <div class="settings-form d-flex f-jc-left p-20">
+            <div class="form-left">
+              <form action="" class="text-secondary">
+                <h2 class="mb-20">Player Settings</h2>
+                <div class="form-group">
+                  <div class="text">
+                    &larr;<a class="text-link" routerLink="/dashboard">Go Back to Dashboard</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
