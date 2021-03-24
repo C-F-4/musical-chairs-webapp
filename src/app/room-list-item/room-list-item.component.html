@@ -32,7 +32,7 @@
     </div>
     <div class="btn-group w-100 d-flex">
       <button class="btn btn-primary f-1" (click)="onRoomAction(action.JoinRoom)" [disabled]="!(gameRoom.isActive && commonService.isJoinGameOn)" title="Join Game">Join Game</button>
-      <button class="btn btn-secondary f-1" (click)="onRoomAction(action.SpectateRoom)" [disabled]="!gameRoom.isActive" title="Spectate Game">View Game</button>
+      <button class="btn btn-secondary f-1" (click)="onRoomAction(action.SpectateRoom)" [disabled]="!commonService.isSpectateGameOn" title="Spectate Game">View Game</button>
     </div>
   </div>
 </ng-template>

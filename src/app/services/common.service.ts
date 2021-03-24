@@ -9,6 +9,7 @@ export class CommonService {
   isAutoLoginOnRegisterOn: boolean;
   isDevMode: boolean;
   isJoinGameOn: boolean;
+  isSpectateGameOn: boolean;
   globals: any;
 
   constructor() {
@@ -16,6 +17,7 @@ export class CommonService {
     this.isAutoLoginOnRegisterOn = true;
     this.isDevMode = true;
     this.isJoinGameOn = false;
+    this.isSpectateGameOn = true;
   }
 
 }

@@ -1,3 +1,4 @@
 export enum GameType {
-  MusicalChairs = 'Musical Chairs'
+  MusicalChairs = 'Musical Chairs',
+  Unknown = 'Unknown'
 }

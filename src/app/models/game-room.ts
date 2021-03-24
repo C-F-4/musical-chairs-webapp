@@ -20,7 +20,7 @@ export class GameRoom implements IGameroom {
     this.publicRoomId = (new ShortUniqueId())();
     this.gameType = gameType;
     this.players = [];
-    this.isActive = true;
+    this.isActive = false;
     this.winnerId = null;
     this.roundCount = 0;
     this.eliminated = [];
