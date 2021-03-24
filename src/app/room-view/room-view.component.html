@@ -13,6 +13,13 @@
     <div class="text">
       &larr;<a class="text-link" routerLink="/dashboard">Go Back to Dashboard</a>
     </div>
-    <div class="game-view"></div>
+    <div class="game-view grid-small">
+      <div class="grid-card d-flex" *ngFor="let player of gameRoomData?.players">
+        <div class="grid-card-body text-center">
+          <img [src]="player.avatar" [alt]="player.username">
+          <h3>{{ player.username }}</h3>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
