@@ -26,7 +26,25 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-To get help on Conventional Commits, check out the docs [here](https://www.conventionalcommits.org/en/v1.0.0/)
+* To get help on Conventional Commits, check out the docs [here](https://www.conventionalcommits.org/en/v1.0.0/)
+The commit contains the following structural elements, to communicate intent to the consumers of your library:
+
+  - fix: a commit of the type fix patches a bug in your codebase (this correlates with PATCH in Semantic Versioning).
+  - feat: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in Semantic Versioning).
+  - BREAKING CHANGE: a commit that has a footer BREAKING CHANGE:, or appends a ! after the type/scope, introduces a breaking API change (correlating with MAJOR in Semantic Versioning). A BREAKING CHANGE can be part of commits of any type.
+  - types other than fix: and feat: are allowed, for example @commitlint/config. -conventional (based on the the Angular convention) recommends build:, chore:, ci:,    docs:, style:, refactor:, perf:, test:, and others.
+  - footers other than BREAKING CHANGE: <description> may be provided and follow a convention similar to git trailer format.
+
+  - build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+  - ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+  - docs: Documentation only changes
+  - feat: A new feature
+  - fix: A bug fix
+  - perf: A code change that improves performance
+  - refactor: A code change that neither fixes a bug nor adds a feature
+  - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+  - test: Adding missing tests or correcting existing tests
+
 
 More help on SCSS [here](https://sass-lang.com/documentation/syntax)
 
