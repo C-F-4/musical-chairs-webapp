@@ -1,6 +1,6 @@
 <div class="container--game p-20">
   <h2 class="section-header">
-    <span>{{ gameRoomData?.isActive ? '🟢 ' : '🔴 '}}</span>
+    <span [title]="gameRoomData?.isActive ? 'Active' : 'Inactive'">{{ gameRoomData?.isActive ? '🟢 ' : '🔴 '}}</span>
     <span>Game of {{ gameRoomData?.gameType }}</span>
     <span title="Share Code with friends to join">({{ gameRoomData?.publicRoomId }})</span>
     <span> - </span>

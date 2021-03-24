@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { GeneratorService, LoggerService, UserService } from '.';
 import { GameType } from './../enums';
-import { IGameroom } from './../interfaces';
+import { IGameroom, IUser } from './../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -90,6 +90,9 @@ export class GameService {
       if (game.isActive) {
         throw new Error(`LOG: Game already activated`);
       }
+      if (game.playing?.length === 1 && game.winnerId) {
+        throw new Error(`LOG: Game already won by ${game.playing[0].username}`);
+      }
       this.loggerService.log(`LOG: Starting Game ${game.id}`);
       game.isActive = !game.isActive;
       if (this.updateGameRoomById(game)) {
@@ -103,6 +106,18 @@ export class GameService {
     }
   }
 
+  private eliminate(game: IGameroom, player: IUser, playerIdx: number): IGameroom {
+    if (game.playing && game.playing[playerIdx].id === player.id) {
+      const eliminatedPlayer = game.playing.splice(playerIdx, 1);
+      this.loggerService.log(`Eliminated ${eliminatedPlayer[0].username}`);
+      if (!game.eliminated) {
+        game.eliminated = [];
+      }
+      game.eliminated.push(eliminatedPlayer[0]);
+    }
+    return game;
+  }
+
   private startGame(game: IGameroom): void {
     this.loggerService.log(`LOG: Game Started: ${game.publicRoomId}`);
     let ctr = 0;
@@ -110,11 +125,19 @@ export class GameService {
     const idx = game.publicRoomId;
     if (idx) {
       this.gameRoomIntervals[idx] = setInterval(() => {
-        if (game.playing && playerIdx < game.playing.length && game.playing[playerIdx]) {
-          this.loggerService.log(`Eliminate ${playerIdx}, ${game.playing[playerIdx].username}`);
+        if (game.playing && game.playing.length > 1 && playerIdx < game.playing.length && game.playing[playerIdx]) {
+          this.loggerService.log(`Eliminating ${playerIdx}, ${game.playing[playerIdx].username}`);
+          game = this.eliminate(game, game.playing[playerIdx], playerIdx);
           ctr += 1;
           playerIdx += ctr;
         } else {
+          if (game.playing?.length === 1) {
+            game.winnerId = game.playing[0].id;
+          }
+          game.isActive = !game.isActive;
+          if (typeof game.roundCount === 'number') {
+            game.roundCount += 1;
+          }
           clearInterval(this.gameRoomIntervals[game.publicRoomId || 'unknown']);
         }
       }, 1000);
