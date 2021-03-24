@@ -1,3 +1,67 @@
 .container--game {
   margin: 20px 10px;
+
+  .grid-card {
+    transition: width 3s, flex 3s;
+  }
+}
+
+.game-eliminated-users {
+  background: aliceblue;
+
+  ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+
+    li {
+      padding: 10px;
+      border-bottom: 2px solid;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .grid-large {
+    .grid-card {
+      width: 10%;
+    }
+
+    .grid-card-header {
+      font-size: medium;
+      word-break: break-all;
+    }
+  }
+}
+
+@media screen and (min-width: 1136px) {
+  .grid-large {
+    .grid-card {
+      width: 20%;
+    }
+
+    .grid-card-header {
+      font-size: medium;
+      word-break: break-all;
+    }
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .game-view {
+    .game-eliminated-users {
+      transition: flex 3s;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .game-view {
+    flex-direction: column;
+
+    .game-eliminated-users {
+      width: 100%;
+    }
+  }
 }

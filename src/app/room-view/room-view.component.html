@@ -14,13 +14,21 @@
     <div class="text mtb-10">
       &larr;<a class="text-link" routerLink="/dashboard">Go Back to Dashboard</a>
     </div>
-    <div class="game-view grid grid-large">
-      <div class="grid-card d-flex" *ngFor="let player of gameRoomData?.playing">
-        <div class="grid-card-body text-center">
-          <img class="grid-card-img" [src]="player.avatar" [alt]="player.username">
-          <h3 class="grid-card-header">{{ player.username }}</h3>
-          <p class="text" *ngIf="gameRoomData?.winnerId">{{ gameRoomData?.metadata?.winnerChairIdx + 1 }}</p>
+    <div class="game-view d-flex f-jc-spacebetween f-ai-fstart">
+      <div class="game-board grid grid-large f-1">
+        <div class="grid-card d-flex" *ngFor="let player of gameRoomData?.playing" [ngClass]="{'f-1': gameRoomData?.winnerId === player.id}">
+          <div class="grid-card-body text-center">
+            <img class="grid-card-img" [src]="player.avatar" [alt]="player.username">
+            <h3 class="grid-card-header">{{ player.username }}</h3>
+            <h4 class="text text-secondary" *ngIf="gameRoomData?.winnerId">Chair #{{ gameRoomData?.metadata?.winnerChairIdx + 1 }}</h4>
+          </div>
         </div>
+      </div>
+      <div class="game-eliminated-users w-e16" [ngClass]="{'f-1': gameRoomData?.winnerId}">
+        <h2 class="section-header text-center">Eliminated Players</h2>
+        <ul>
+          <li *ngFor="let player of gameRoomData?.eliminated">{{ player.username }}</li>
+        </ul>
       </div>
     </div>
   </div>

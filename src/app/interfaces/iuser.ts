@@ -13,4 +13,6 @@ export interface IUser {
   settings?: IUserSettings;
 
   password?: string;
+
+  metadata?: any;
 }

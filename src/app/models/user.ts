@@ -15,6 +15,7 @@ export class User implements IUser {
   gameHistory: IUserGameHistory[];
   settings: IUserSettings;
   password: string;
+  metadata?: any;
 
   constructor(email: string, password: string) {
     this.id = uuidv4();
@@ -27,6 +28,9 @@ export class User implements IUser {
     this.username = GeneratorService.username();
     this.firstname = GeneratorService.firstname();
     this.lastname = GeneratorService.lastname();
+    this.metadata = {
+      game: []
+    };
   }
 
 }
