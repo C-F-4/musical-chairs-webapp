@@ -17,17 +17,29 @@
   margin: 0 16px;
 }
 
-.toolbar #profile-logo {
+.toolbar #icon-theme {
   height: 40px;
   margin: 0 8px;
 }
 
-.toolbar #logout-logo {
+.toolbar #icon-logout {
   height: 40px;
   margin: 0 16px;
 }
 
-.toolbar #profile-logo:hover,
-.toolbar #logout-logo:hover {
+.toolbar #icon-theme:hover,
+.toolbar #icon-logout:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 425px) {
+  .navbar-section svg {
+    margin: 0 4px!important;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .navbar-section #icon-theme {
+    display: none;
+  }
 }
