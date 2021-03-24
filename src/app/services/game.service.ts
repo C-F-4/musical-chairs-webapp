@@ -11,6 +11,7 @@ export class GameService {
 
   private gameRooms: IGameroom[];
   private readonly supportedGameModes = [GameType.MusicalChairs];
+  private gameRoomIntervals: {[key: string]: any} = {};
 
   constructor(
     private generatorService: GeneratorService,
@@ -104,7 +105,20 @@ export class GameService {
 
   private startGame(game: IGameroom): void {
     this.loggerService.log(`LOG: Game Started: ${game.publicRoomId}`);
-    // setTimeout(()=>{},1000);
+    let ctr = 0;
+    let playerIdx = 0;
+    const idx = game.publicRoomId;
+    if (idx) {
+      this.gameRoomIntervals[idx] = setInterval(() => {
+        if (game.playing && playerIdx < game.playing.length && game.playing[playerIdx]) {
+          this.loggerService.log(`Eliminate ${playerIdx}, ${game.playing[playerIdx].username}`);
+          ctr += 1;
+          playerIdx += ctr;
+        } else {
+          clearInterval(this.gameRoomIntervals[game.publicRoomId || 'unknown']);
+        }
+      }, 1000);
+    }
   }
 
 }
