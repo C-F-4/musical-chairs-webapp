@@ -21,7 +21,7 @@
         </ul>
       </div>
       <div class="section--body f-1">
-        <div class="profile-form d-flex f-jc-spacearound f-ai-normal p-20" *ngIf="tabSelected === tabname.Profile; else sectionSettings">
+        <div class="profile-form d-flex f-jc-spacebetween f-ai-normal p-20" *ngIf="tabSelected === tabname.Profile; else sectionSettings">
           <div class="form-left">
             <form action="" class="text-secondary" [formGroup]="formProfile" (ngSubmit)="onUpdateProfile($event)">
               <h2 class="mb-20">Player Profile</h2>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <ng-template #sectionSettings>
-          <div class="settings-form d-flex f-jc-left p-20">
+          <div class="settings-form d-flex f-jc-spacebetween p-20">
             <div class="form-left">
               <form action="" class="text-secondary">
                 <h2 class="mb-20">Player Settings</h2>

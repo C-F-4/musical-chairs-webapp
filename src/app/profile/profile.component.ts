@@ -69,10 +69,10 @@ export class ProfileComponent implements OnInit {
           Validators.required,
           Validators.email
         ])],
-        firstname: [this.user.firstname, Validators.compose([
+        firstname: [this.user.firstname || '', Validators.compose([
           Validators.required
         ])],
-        lastname: [this.user.lastname, Validators.compose([
+        lastname: [this.user.lastname || '', Validators.compose([
           Validators.required
         ])],
         pass: [this.user.password, Validators.compose([
