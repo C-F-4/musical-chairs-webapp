@@ -17,6 +17,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameHistoryComponent } from './game-history/game-history.component';
 import { AlertComponent } from './alert/alert.component';
+import { PopupModalComponent } from './popup-modal/popup-modal.component';
+import { RoomCreateComponent } from './room-create/room-create.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AlertComponent } from './alert/alert.component';
     NavigationComponent,
     DashboardComponent,
     GameHistoryComponent,
-    AlertComponent
+    AlertComponent,
+    PopupModalComponent,
+    RoomCreateComponent
   ],
   imports: [
     BrowserModule,
