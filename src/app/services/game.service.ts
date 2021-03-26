@@ -27,11 +27,31 @@ export class GameService {
     return GeneratorService.generateGameRooms(count);
   }
 
-  private populateGameRooms(): void {
-    for (let i = 0; i < this.gameRooms.length; i ++) {
-      this.gameRooms[i].playing = [...this.gameRooms[i].players] = GeneratorService.populateGameRoom(
-        [...this.userService.userlist], 50, i
-      );
+  private populateGameRooms(id?: string): void {
+    if (!id) {
+      for (let i = 0; i < this.gameRooms.length; i++) {
+        this.gameRooms[i].playing = [...this.gameRooms[i].players] = GeneratorService.populateGameRoom(
+          [...this.userService.userlist], 50, i
+        );
+      }
+    } else {
+      const gameRoomIdx = this.gameRooms.findIndex(gameRoomEl => gameRoomEl.id === id);
+      if (gameRoomIdx >= 0) {
+        this.gameRooms[gameRoomIdx].playing = [...this.gameRooms[gameRoomIdx].players] = GeneratorService.populateGameRoom(
+          [...this.userService.userlist], 50, gameRoomIdx
+        );
+      }
+    }
+  }
+
+  public createRoom(): void {
+    const gameRooms = this.fetchGameRooms(1);
+    if (gameRooms?.length) {
+      this.gameRooms.push(...gameRooms);
+      gameRooms.forEach(gameRoom => {
+        this.generatorService.generateUsers(40);
+        this.populateGameRooms(gameRoom.id);
+      });
     }
   }
 
@@ -92,6 +112,8 @@ export class GameService {
       }
       if (game.playing?.length === 1 && game.winnerId) {
         throw new Error(`LOG: Game already won by ${game.playing[0].username}`);
+      } else  if (game.playing && game.playing.length < 1) {
+        throw new Error(`LOG: Game has no active players, can't be started`);
       }
       this.loggerService.log(`LOG: Starting Game ${game.id}`);
       game.isActive = !game.isActive;
@@ -133,6 +155,8 @@ export class GameService {
           game = this.eliminate(game, game.playing[playerIdx], playerIdx);
           ctr += 1;
           playerIdx += ctr;
+          // To continue with the same counter instead of resetting, use this in else
+          // playerIdx %= game.playing.length;
         } else {
           if (game.playing?.length === 1) {
             game.winnerId = game.playing[0].id;

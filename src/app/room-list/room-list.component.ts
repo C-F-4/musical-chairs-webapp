@@ -25,7 +25,10 @@ export class RoomListComponent implements OnInit {
   }
 
   onClick(event: any): void {
-    if (event.type === RoomAction.CreateRoom || event.type === RoomAction.JoinRoom) {
+    if (event.type === RoomAction.CreateRoom) {
+      this.loggerService.log(`Creating Room`);
+      this.gameService.createRoom();
+    } else if (event.type === RoomAction.JoinRoom) {
       this.loggerService.log(`Unsupported Action`);
     } else if (event.type === RoomAction.SpectateRoom) {
       this.loggerService.log(`Spectating Game with id ${event.id}`);
