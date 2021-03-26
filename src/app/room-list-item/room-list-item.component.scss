@@ -17,14 +17,27 @@
 }
 
 .card-create {
+  background: linear-gradient(90deg, rgba(141,70,172,1) 0%, #333 65%, rgba(51,51,51,1) 100%);
+  color: #ffd740;
+
+  .card-icon {
+    svg {
+      max-width: 100%;
+    }
+  }
+
+  .card-icon,
   .card-header {
     transition: all 0.3s ease-in-out;
+    color: #ffd740;
+    font-size: x-large;
   }
 
   .card-header-icon {
     svg {
       width: 28px;
       height: 25px;
+      stroke: #ffd740;
     }
   }
 }

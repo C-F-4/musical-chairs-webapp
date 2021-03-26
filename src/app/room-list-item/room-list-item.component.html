@@ -1,7 +1,16 @@
 <ng-container *ngIf="type === roomType.CreateRoom; else roomListItem">
   <div class="grid-card-body card-create">
     <a class="link-overlay" (click)="onRoomAction(action.CreateRoom)">
-      <div class="card-header d-flex">
+      <div class="card-icon">
+        <svg viewbox="0 0 1129 994">
+          <!-- <g fill="none" fill-rule="nonzero" stroke="#999" stroke-width="41">
+            <path d="M564.5 212.437L95.67 873.5h937.66L564.5 212.437z"/>
+            <path d="M564.5 407.47L163.638 973.5h801.724L564.5 407.47z"/>
+            <path d="M564.5 35.409L39.699 774.5H1089.3L564.5 35.409z"/>
+          </g> -->
+        </svg>
+      </div>
+      <div class="card-header d-flex plr-10">
         <h3 class="card-header-title text-left f-1">Create New Gameroom</h3>
         <div class="card-header-icon">
           <svg viewbox="0 0 28 25">
