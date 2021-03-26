@@ -12,6 +12,9 @@ export class UserService {
   public get loggedUser(): IUser {
     return this.user;
   }
+  public set loggedUser(user: IUser) {
+    this.user = user;
+  }
 
   // Temporary - treat as mock dataset for server
   private user: any;
@@ -69,6 +72,24 @@ export class UserService {
       throw new Error('User Not Found');
     }
     return user;
+  }
+
+  private mapUser(user: IUser, from: IUser): IUser {
+    user.firstname = from.firstname;
+    user.lastname = from.lastname;
+    user.email = from.email;
+    user.password = from.password;
+    user.avatar = from.avatar;
+    return user;
+  }
+
+  public async updateUser(user: IUser): Promise<IUser> {
+    const userIdx = this.users.findIndex(userEl => userEl.id === user.id);
+    if (userIdx < 0) {
+      throw new Error('User Not Found');
+    }
+    this.users[userIdx] = this.mapUser(this.users[userIdx], user);
+    return this.users[userIdx];
   }
 
   private async serverLogin(email: string, pass: string): Promise<IUser> {

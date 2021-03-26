@@ -70,19 +70,19 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  get avatar(): string {
+  public get avatar(): string {
     return this.user.avatar || '';
   }
 
-  get username(): string {
+  public get username(): string {
     return this.user.username || '';
   }
 
-  get tabname(): typeof Tabname {
+  public get tabname(): typeof Tabname {
     return Tabname;
   }
 
-  onFormInit(): void {
+  private onFormInit(): void {
     if (this.tabSelected === this.tabname.Profile) {
       this.formProfile = this.fb.group({
         email: [this.user.email, Validators.compose([
@@ -95,7 +95,7 @@ export class ProfileComponent implements OnInit {
         lastname: [this.user.lastname || '', Validators.compose([
           Validators.required
         ])],
-        pass: [this.user.password, Validators.compose([
+        password: [this.user.password, Validators.compose([
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(16)
@@ -106,8 +106,19 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  onUpdateProfile(evt: Event): void {
-    // To-Do
+  public async onUpdateProfile(evt: Event): Promise<void> {
+    try {
+      this.user.email = this.formProfile.controls.email.value;
+      this.user.firstname = this.formProfile.controls.firstname.value;
+      this.user.lastname = this.formProfile.controls.lastname.value;
+      this.user.password = this.formProfile.controls.password.value;
+      this.user = await this.userService.updateUser(this.user);
+      this.notificationService.addBasicNotification(AlertType.FormSuccess, 'Alert: User Updated Successfully!');
+      this.userService.loggedUser = this.user;
+      this.formProfile.reset(this.user);
+    } catch (err) {
+      this.notificationService.addBasicNotification(AlertType.FormFailure, 'Alert: User Update Failed');
+    }
   }
 
 }
