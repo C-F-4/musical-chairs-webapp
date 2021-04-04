@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+import QRCodeStyling from 'qr-code-styling';
+
 import { AlertType, Tabname } from '../enums';
 import { IUser } from '../interfaces';
-import { NotificationService, UserService } from '../services';
+import { CommonService, NotificationService, UserService } from '../services';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
   user: IUser;
   formProfile!: FormGroup;
@@ -19,11 +21,15 @@ export class ProfileComponent implements OnInit {
   tabSelected = this.defaultTab;
   isViewMode = false;
   guestUser: IUser = {};
+  qrCode: any;
+  @ViewChild('qrCodeCanvas', { static: false }) qrCodeCanvasRef!: ElementRef;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private changeDetectorRef: ChangeDetectorRef,
+    private commonService: CommonService,
     private notificationService: NotificationService,
     private userService: UserService,
   ) {
@@ -37,6 +43,7 @@ export class ProfileComponent implements OnInit {
         if (selectedUser && selectedUser !== this.user.username) {
           this.isViewMode = true;
           this.guestUser = this.userService.getUserByUsername(selectedUser);
+          this.qrRenderer();
         } else {
           this.isViewMode = false;
           this.guestUser = {};
@@ -82,6 +89,15 @@ export class ProfileComponent implements OnInit {
     return Tabname;
   }
 
+  private qrRenderer(): void {
+    // To-Do
+    this.changeDetectorRef.detectChanges();
+    const qrConfig = this.commonService.globals.profileQrConfig || {};
+    qrConfig.data = `${qrConfig.data}${this.guestUser.username}`;
+    this.qrCode = new QRCodeStyling(qrConfig);
+    this.qrCode.append(this.qrCodeCanvasRef.nativeElement);
+  }
+
   private onFormInit(): void {
     if (this.tabSelected === this.tabname.Profile) {
       this.formProfile = this.fb.group({
@@ -119,6 +135,10 @@ export class ProfileComponent implements OnInit {
     } catch (err) {
       this.notificationService.addBasicNotification(AlertType.FormFailure, 'Alert: User Update Failed');
     }
+  }
+
+  ngOnDestroy(): void {
+    this.qrCode = null;
   }
 
 }

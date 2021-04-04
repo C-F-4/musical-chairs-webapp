@@ -32,6 +32,11 @@
   opacity: 0.8;
 }
 
+.navbar-brand:hover {
+  animation: pulse 2s;
+  animation-iteration-count: infinite;
+}
+
 @media screen and (max-width: 425px) {
   .navbar-section svg {
     margin: 0 4px!important;
